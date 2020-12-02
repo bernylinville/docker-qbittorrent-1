@@ -71,7 +71,7 @@ VOLUME ["/config", "/torrents", "/downloads"]
 
 ENV HOME=/home/qbittorrent \
 WEB_PORT=8080 \
-BT_PORT=8999 \
+BT_PORT=8999
 
 USER qbittorrent
 
