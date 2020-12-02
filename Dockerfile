@@ -1,7 +1,8 @@
 FROM alpine:3.12
 
 # Install required packages
-RUN apk add --no-cache \
+RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.aliyun.com/g' /etc/apk/repositories \
+    && apk add --update --no-cache \
         boost-system \
         boost-thread \
         ca-certificates \
@@ -13,8 +14,9 @@ RUN apk add --no-cache \
 # Compiling qBitTorrent following instructions on
 # https://github.com/qbittorrent/qBittorrent/wiki/Compiling-qBittorrent-on-Debian-and-Ubuntu#Libtorrent
 RUN set -x \
+    && sed -i 's/dl-cdn.alpinelinux.org/mirrors.aliyun.com/g' /etc/apk/repositories \
     # Install build dependencies
- && apk add --no-cache -t .build-deps \
+ && apk add --update --no-cache -t .build-deps \
         boost-dev \
         cmake \
         g++ \

@@ -1,0 +1,19 @@
+version: '3'
+services:
+  qbittorrent:
+    image: bernylinville/qbittorrent
+    container_name: qbittorrent
+    restart: always
+    port:
+      - $WEB_PORT:$WEB_PORT
+      - $BT_PORT:$BT_PORT/tcp
+      - $BT_PORT:$BT_PORT/udp
+    volumes:
+      - /mnt/user/docker/docker-qbittorrent-1/config:/config
+      - /mnt/user/docker/docker-qbittorrent-1/data:/data
+      - /mnt/user/downloads:/downloads
+    environment:
+      - PUID=$PUID
+      - PGID=$PGID
+      - WEB_PORT=$WEB_PORT
+      - BT_PORT=$BT_PORT
