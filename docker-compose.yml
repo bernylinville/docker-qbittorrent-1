@@ -4,7 +4,7 @@ services:
     image: bernylinville/qbittorrent
     container_name: qbittorrent
     restart: always
-    port:
+    ports:
       - $WEB_PORT:$WEB_PORT
       - $BT_PORT:$BT_PORT/tcp
       - $BT_PORT:$BT_PORT/udp
